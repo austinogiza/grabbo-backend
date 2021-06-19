@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'tinymce',
     'corsheaders',
     'ckeditor',
-    'ckeditor_uploader' 
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +135,13 @@ CORS_ALLOWED_ORIGINS = [
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST_USER = 'contact@grabbofertilityclinic.com'
+EMAIL_HOST_PASSWORD = 'Blessing@1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'

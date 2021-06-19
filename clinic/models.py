@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import related
 from django.db.models.signals import pre_save, post_save
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -13,9 +14,7 @@ class Blog(models.Model):
     date = models.DateField()
     date_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(blank=False, null=True)
-    image_2 = models.ImageField(blank=True, null=True)
-    image_3 = models.ImageField(blank=True, null=True)
-    image_4 = models.ImageField(blank=True, null=True)
+    comments = models.ManyToManyField("Comments", related_name="blog_comment")
     slug = models.SlugField(blank=False, null=True)
 
     class Meta:
@@ -42,10 +41,11 @@ class Departments(models.Model):
 
 
 class Comments(models.Model):
-    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="comment_post")
     user = models.CharField(max_length=200)
+    comment = models.TextField(blank=False, null=True)
     date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(blank=False, null=True)
+
     
     class Meta:
         verbose_name="Comments"
@@ -67,7 +67,7 @@ class Contact(models.Model):
         verbose_name_plural="Contact"
 
     def __str__(self):
-        return self.post.title
+        return self.name
 
 
 class Professional(models.Model):

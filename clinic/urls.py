@@ -14,8 +14,9 @@ urlpatterns = [
     path('personnel/', views.PersonnelListView.as_view(), name="personnel"),
     path('personnel/<slug>/', views.PersonnelDetailView.as_view(), name="personnel-details"),
     path('careers/', views.CareerListView.as_view(), name="careers"),
-        path('careers/<slug>/', views.CareerDetailView.as_view(), name="careers-details"),
-         path('contact/', views.ContactView.as_view(), name="contact"),
-    
+    path('careers/<slug>/', views.CareerDetailView.as_view(), name="careers-details"),
+    path('contact/', views.ContactView.as_view(), name="contact"),
+    path('comment-done/', views.BlogCommentView.as_view(), name="comment-done"),
+    path('comment-fetch/', views.BlogCommentFetchView.as_view(), name="comment-fetch"),
    
 ]
