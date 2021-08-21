@@ -60,17 +60,27 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'grabbo',
+#         "USER": 'postgres',
+#         "PASSWORD": 'austinforreal',
+#         "PORT": "",
+#         "HOST": "localhost",
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'grabbo',
-        "USER": 'postgres',
-        "PASSWORD": 'austinforreal',
-        "PORT": "",
-        "HOST": "localhost",
+        'USER': 'grabbo',
+        'PASSWORD': 'grabbo',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
