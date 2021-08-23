@@ -123,8 +123,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+
+# STATICFILES_DIRS = [
+#   "/home/grabbo/grabbo-backend/static"
+# ]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-#STATIC_ROOT = "/home/grabbo/grabbo-backend/static"
+#STATIC_ROOT = "/home/grabbo/grabbo-backend/assets"
 
 MEDIA_URL = '/media/'
 
