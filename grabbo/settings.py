@@ -9,6 +9,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,27 +62,27 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'grabbo',
-#         "USER": 'postgres',
-#         "PASSWORD": 'austinforreal',
-#         "PORT": "",
-#         "HOST": "localhost",
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'grabbo',
-        'USER': 'grabbo',
-        'PASSWORD': 'grabbo',
-        'HOST': 'localhost',
-        'PORT': '',
+        "USER": 'postgres',
+        "PASSWORD": 'austinforreal',
+        "PORT": "",
+        "HOST": "localhost",
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'grabbo',
+#         'USER': 'grabbo',
+#         'PASSWORD': 'grabbo',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -121,6 +123,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
+    #os.path.join(BASE_DIR, 'assets')
+
 ]
 
 
@@ -129,12 +133,15 @@ STATICFILES_DIRS = [
 # ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-#STATIC_ROOT = "/home/grabbo/grabbo-backend/assets"
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#MEDIA_ROOT = "/home/grabbo/grabbo-backend/media"
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 
 
 REST_FRAMEWORK = {
