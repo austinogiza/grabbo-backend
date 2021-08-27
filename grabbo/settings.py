@@ -1,9 +1,11 @@
 from pathlib import Path
 import os
+import environ
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&'
+SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
@@ -164,10 +166,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.com'
-EMAIL_HOST_USER = 'contact@grabbofertilityclinic.com'
-EMAIL_HOST_PASSWORD = 'Blessing@1'
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
