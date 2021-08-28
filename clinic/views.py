@@ -19,7 +19,7 @@ class BlogListView(ListAPIView):
 
 class DepartmentListView(ListAPIView):
     serializer_class = DepartmentListSerializer
-    queryset = Departments.objects.all().order_by('-date')
+    queryset = Departments.objects.all().order_by('date')
     permission_classes = (AllowAny, )
 
 
@@ -93,7 +93,7 @@ class HomePersonnelListView(ListAPIView):
 
 class HomeDepartmentListView(ListAPIView):
     serializer_class = DepartmentListSerializer
-    queryset = Departments.objects.all().order_by('-date')[:4]
+    queryset = Departments.objects.all().order_by('date')[:4]
     permission_classes = (AllowAny, )
 
 class CareerListView(ListAPIView):
