@@ -34,6 +34,9 @@ class PersonnelListView(ListAPIView):
     queryset = Professional.objects.all().order_by('-date')
     permission_classes = (AllowAny, )
 
+    def get_queryset(self):
+        return Professional.objects.all().order_by('-date')
+
 class PersonnelDetailView(RetrieveAPIView):
     lookup_field = 'slug'
     permission_classes = (AllowAny,)
