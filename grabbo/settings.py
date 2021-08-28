@@ -5,7 +5,7 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #SECRET_KEY = config("SECRET_KEY") windows env setting
-SECRET_KEY = os.environ.get("SECRET_KEY") ##linux env settings
+SECRET_KEY = '1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&' ##linux env settings
 
 DEBUG = True
 
@@ -177,10 +177,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST =  'smtp.zoho.com'
+EMAIL_HOST_USER ='contact@grabbofertilityclinic.com'
+EMAIL_HOST_PASSWORD = 'Blessing@1'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'
