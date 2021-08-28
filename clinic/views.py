@@ -3,7 +3,7 @@ from clinic.models import Blog, Career, Comments, Contact, Departments, Professi
 from clinic.serializers import BlogListSerializer, CareerListSerializer, CommentSerializer, ContactSerializer, DepartmentListSerializer, ProfessionaListSerializer
 from django.shortcuts import get_object_or_404, render
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK
+from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny
 from django.core.mail import EmailMessage
@@ -108,17 +108,24 @@ class CareerDetailView(RetrieveAPIView):
     serializer_class = CareerListSerializer
 
 
-class ContactView(CreateAPIView):
+class ContactView(APIView):
     permission_classes = (AllowAny,)
     serializer_class = ContactSerializer
 
-    def perform_create(self, serializer):
-        serializer.save()
-        user_data = serializer.data
-        name = user_data['name']
-        email = user_data['email']
-        subject = user_data['subject']
-        message = user_data['message']
+    def post(self, request, *args, **kwargs):
+        name = request.data.get('name')
+        email = request.data.get('email')
+        subject = request.data.get('subject')
+        message = request.data.get('message')
+        contact = Contact(
+            name=name,
+email=email,
+subject=subject,
+message=message,
+        )
+        contact.save()
+
+
         context ={
             "name": name,
             "email": email,
@@ -134,5 +141,6 @@ class ContactView(CreateAPIView):
         )
         email.fail_silently = False
         email.send()
+        return Response(status=HTTP_201_CREATED)
 
     
