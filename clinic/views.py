@@ -31,11 +31,11 @@ class DepartmentDetailView(RetrieveAPIView):
 
 class PersonnelListView(ListAPIView):
     serializer_class = ProfessionaListSerializer
-    queryset = Professional.objects.all().order_by('-date')
+    queryset = Professional.objects.all().order_by("date")
     permission_classes = (AllowAny, )
 
     def get_queryset(self):
-        return Professional.objects.all().order_by('-date')
+        return Professional.objects.all().order_by('date')
 
 class PersonnelDetailView(RetrieveAPIView):
     lookup_field = 'slug'
