@@ -64,27 +64,27 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'grabbo',
-        "USER": 'postgres',
-        "PASSWORD": 'austinforreal',
-        "PORT": "",
-        "HOST": "localhost",
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'grabbo',
-#         'USER': 'grabbo',
-#         'PASSWORD': 'grabbo',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         "USER": 'postgres',
+#         "PASSWORD": 'austinforreal',
+#         "PORT": "",
+#         "HOST": "localhost",
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'grabbo',
+        'USER': 'grabbo',
+        'PASSWORD': 'grabbo',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -124,8 +124,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-    #os.path.join(BASE_DIR, 'assets')
+    # os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'assets')
 
 ]
 
@@ -134,8 +134,8 @@ STATICFILES_DIRS = [
 #   "/home/grabbo/grabbo-backend/static"
 # ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_URL = '/media/'
