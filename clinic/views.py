@@ -31,7 +31,7 @@ class DepartmentDetailView(RetrieveAPIView):
 
 class PersonnelListView(ListAPIView):
     serializer_class = ProfessionaListSerializer
-    queryset = Professional.objects.all()
+    queryset = Professional.objects.all().order_by('-date')
     permission_classes = (AllowAny, )
 
 class PersonnelDetailView(RetrieveAPIView):
