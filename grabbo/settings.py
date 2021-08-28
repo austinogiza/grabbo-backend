@@ -9,9 +9,9 @@ SECRET_KEY = '1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&' ##linux env se
 
 DEBUG = True
 
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
+# ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
 
 
 INSTALLED_APPS = [
@@ -64,27 +64,27 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'grabbo',
-#         "USER": 'postgres',
-#         "PASSWORD": 'austinforreal',
-#         "PORT": "",
-#         "HOST": "localhost",
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'grabbo',
-        'USER': 'grabbo',
-        'PASSWORD': 'grabbo',
-        'HOST': 'localhost',
-        'PORT': '',
+        "USER": 'postgres',
+        "PASSWORD": 'austinforreal',
+        "PORT": "",
+        "HOST": "localhost",
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'grabbo',
+#         'USER': 'grabbo',
+#         'PASSWORD': 'grabbo',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
