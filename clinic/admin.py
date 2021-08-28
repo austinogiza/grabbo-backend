@@ -6,7 +6,7 @@ from .models import Blog, Comments, Departments, Professional, Career,Contact
 
 class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ["name", "date"]
+   
 
 
 class DepartmentsAdmin(admin.ModelAdmin):
@@ -14,6 +14,7 @@ class DepartmentsAdmin(admin.ModelAdmin):
 
 class ProfessionalAdmin(admin.ModelAdmin):
         prepopulated_fields = {"slug": ("name",)}
+        list_display = ["name", "date"]
 
 class CareerAdmin(admin.ModelAdmin):
         prepopulated_fields = {"slug": ("title",)}
