@@ -9,9 +9,9 @@ SECRET_KEY = '1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&' ##linux env se
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
-# ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
+ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
 
 
 INSTALLED_APPS = [
