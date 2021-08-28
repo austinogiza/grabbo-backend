@@ -5,7 +5,7 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #SECRET_KEY = config("SECRET_KEY") windows env setting
-##SECRET_KEY = os.environ.get("SECRET_KEY") linux env settings
+SECRET_KEY = os.environ.get("SECRET_KEY") ##linux env settings
 
 DEBUG = True
 
