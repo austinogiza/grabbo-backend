@@ -93,7 +93,7 @@ class Career(models.Model):
     description = models.CharField(max_length=200)
     open = models.BooleanField(default=False, blank=True, null=False)
     text = RichTextField()
-    slug = models.SlugField(blank=False, null=True,blank=False, null=True)
+    slug = models.SlugField(blank=False, null=True)
 
     class Meta:
         verbose_name="Professional"
