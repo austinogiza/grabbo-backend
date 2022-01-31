@@ -11,10 +11,10 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=50)
     text = RichTextField()
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(blank=False, null=True)
-    comments = models.ManyToManyField("Comments", related_name="blog_comment")
+    comments = models.ManyToManyField("Comments", related_name="blog_comment", blank=True, null=True)
     slug = models.SlugField(blank=False, null=True)
 
     class Meta:
@@ -31,7 +31,7 @@ class Departments(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=False, null=True)
     slug = models.SlugField(blank=False, null=True)
-      
+
     class Meta:
         verbose_name="Departments"
         verbose_name_plural="Departments"
@@ -46,7 +46,7 @@ class Comments(models.Model):
     comment = models.TextField(blank=False, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
-    
+
     class Meta:
         verbose_name="Comments"
         verbose_name_plural="Comments"
@@ -61,7 +61,7 @@ class Contact(models.Model):
     message = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
 
-    
+
     class Meta:
         verbose_name="Contact"
         verbose_name_plural="Contact"
