@@ -11,8 +11,8 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=50)
     text = RichTextField()
-    date = models.DateField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+    date = models.DateField(auto_now_add=True,blank=False, null=True)
+    date_updated = models.DateTimeField(auto_now=True,blank=False, null=True)
     image = models.ImageField(blank=False, null=True)
     comments = models.ManyToManyField("Comments", related_name="blog_comment", blank=True)
     slug = models.SlugField(blank=False, null=True)
@@ -28,7 +28,7 @@ class Blog(models.Model):
 class Departments(models.Model):
     title = models.CharField(max_length=200)
     text = RichTextField()
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True,blank=False, null=True)
     image = models.ImageField(blank=False, null=True)
     slug = models.SlugField(blank=False, null=True)
 
@@ -44,7 +44,7 @@ class Comments(models.Model):
     post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="comment_post")
     user = models.CharField(max_length=200)
     comment = models.TextField(blank=False, null=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True,blank=False, null=True)
 
 
     class Meta:
@@ -59,7 +59,7 @@ class Contact(models.Model):
     email = models.CharField(max_length=200)
     subject = models.CharField(max_length=200)
     message = models.CharField(max_length=200)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True,blank=False, null=True)
 
 
     class Meta:
@@ -77,7 +77,7 @@ class Professional(models.Model):
     text = RichTextField()
     photo = models.ImageField()
     slug = models.SlugField(blank=False, null=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True,blank=False, null=True)
 
     class Meta:
         verbose_name="Professional"
@@ -93,7 +93,7 @@ class Career(models.Model):
     description = models.CharField(max_length=200)
     open = models.BooleanField(default=False, blank=True, null=False)
     text = RichTextField()
-    slug = models.SlugField(blank=False, null=True)
+    slug = models.SlugField(blank=False, null=True,blank=False, null=True)
 
     class Meta:
         verbose_name="Professional"
