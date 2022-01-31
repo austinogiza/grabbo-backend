@@ -14,7 +14,7 @@ class Blog(models.Model):
     date = models.DateField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(blank=False, null=True)
-    comments = models.ManyToManyField("Comments", related_name="blog_comment", blank=True, null=True)
+    comments = models.ManyToManyField("Comments", related_name="blog_comment", blank=True)
     slug = models.SlugField(blank=False, null=True)
 
     class Meta:
