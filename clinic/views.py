@@ -60,6 +60,7 @@ class BlogCommentView(APIView):
     def post(self, request, *args,**kwargs):
         slug= request.data.get('slug')
         user = request.data.get("name")
+        email = request.data.get("email")
         comment = request.data.get("comment")
 
         post = get_object_or_404(Blog, slug=slug)
@@ -67,11 +68,28 @@ class BlogCommentView(APIView):
             user=user,
             comment=comment,
             post = post
-            
+
         )
         comment_post.save()
         post.comments.add(comment_post)
         post.save()
+
+        subject = post.title
+        context ={
+            "name": user,
+            "email": email,
+
+            "message": comment
+        }
+        template = render_to_string('ivf.html', context)
+        mail = EmailMessage(
+             'We have a new comment',
+             template,
+               "contact@grabbofertilityclinic.com",
+            ['contact@grabbofertilityclinic.com']
+        )
+        mail.fail_silently = False
+        mail.send()
         return Response(status=HTTP_200_OK)
 
 
@@ -142,5 +160,3 @@ message=message,
         email.fail_silently = False
         email.send()
         return Response(status=HTTP_201_CREATED)
-
-    

@@ -9,7 +9,7 @@ SECRET_KEY = '1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&' ##linux env se
 
 DEBUG = True
 
-# ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
 
@@ -122,27 +122,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'static')
-    os.path.join(BASE_DIR, 'assets')
+##developments
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
 
+#     # os.path.join(BASE_DIR, 'static')
+
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+#production
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, 'assets')
 ]
 
-
-# STATICFILES_DIRS = [
-#   "/home/grabbo/grabbo-backend/static"
-# ]
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 
 
@@ -169,7 +171,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST =  'smtp.zoho.com'
 EMAIL_HOST_USER ='contact@grabbofertilityclinic.com'
-EMAIL_HOST_PASSWORD = 'Blessing@1'
+EMAIL_HOST_PASSWORD = 'Grace@10'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
