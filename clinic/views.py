@@ -61,6 +61,7 @@ class BlogCommentView(APIView):
         slug= request.data.get('slug')
         user = request.data.get("name")
         email = request.data.get("email")
+        phone = request.data.get("phone")
         comment = request.data.get("comment")
 
         post = get_object_or_404(Blog, slug=slug)
@@ -78,7 +79,7 @@ class BlogCommentView(APIView):
         context ={
             "name": user,
             "email": email,
-
+            "phone":phone,
             "message": comment
         }
         template = render_to_string('ivf.html', context)
