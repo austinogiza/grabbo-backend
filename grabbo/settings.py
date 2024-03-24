@@ -23,10 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     "clinic",
-    'tinymce',
     'corsheaders',
-    'ckeditor',
-    'ckeditor_uploader'
+
 ]
 
 MIDDLEWARE = [
