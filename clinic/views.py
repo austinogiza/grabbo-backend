@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
-from clinic.models import Blog, Career, Comments, Contact, Departments, Professional
-from clinic.serializers import BlogListSerializer, CareerListSerializer, CommentSerializer, ContactSerializer, DepartmentListSerializer, ProfessionaListSerializer
+from .models import  Contact
+from .serializers import ContactSerializer
 from django.shortcuts import get_object_or_404, render
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED
@@ -22,21 +22,19 @@ class ContactView(APIView):
     def post(self, request, *args, **kwargs):
         name = request.data.get('name')
         email = request.data.get('email')
-        subject = request.data.get('subject')
+        phone = request.data.get('phone')
         message = request.data.get('message')
         contact = Contact(
             name=name,
-email=email,
-subject=subject,
-message=message,
+            email=email,
+            phone=phone,
+            message=message,
         )
         contact.save()
-
-
         context ={
             "name": name,
             "email": email,
-            "subject": subject,
+            "phone": phone,
             "message": message
         }
         template = render_to_string('email.html', context)
