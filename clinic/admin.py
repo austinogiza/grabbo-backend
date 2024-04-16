@@ -5,10 +5,12 @@ from .models import Contact
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display=('name','email','phone','message','date')
-
-
-
+    list_display=(
+        "name",
+        "email",
+        "phone",
+        "message",
+        "date",)
 
 
 admin.site.register(Contact,ContactAdmin)

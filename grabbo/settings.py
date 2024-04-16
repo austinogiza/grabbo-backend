@@ -1,11 +1,12 @@
 from pathlib import Path
 import os
-
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #SECRET_KEY = config("SECRET_KEY") windows env setting
-SECRET_KEY = '1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&' ##linux env settings
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'grabbo.settings')
+SECRET_KEY = "1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&" ##linux env settings
 
 DEBUG = True
 
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "clinic",
     'corsheaders',
+      "anymail",
 
 ]
 
@@ -84,18 +86,28 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'grabbo',
+#         'USER': 'postgres',
+#         'PASSWORD': 'austinforreal',
+#         'PORT': '5433',
+#         'HOST': 'localhost'
+
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'grabbo',
-        'USER': 'postgres',
-        'PASSWORD': 'austinforreal',
-        'PORT': '5433',
-        'HOST': 'localhost'
-
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
+        'NAME': 'postgres',
+        'USER': 'postgres.ocywthojngqrssebhast',
+        'PORT': '5432',
+        'PASSWORD': 'Grace20Blessing24',
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -176,13 +188,17 @@ CORS_ALLOWED_ORIGINS = [
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+ANYMAIL = {
 
+    "RESEND_API_KEY": os.environ.get('RESEND_API_KEY'),
+}
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST =  'smtp.zoho.com'
-EMAIL_HOST_USER ='contact@grabbofertilityclinic.com'
-EMAIL_HOST_PASSWORD = 'Grace@10'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST =  'smtp.zoho.com'
+# EMAIL_HOST_USER ='contact@grabbofertilityclinic.com'
+# EMAIL_HOST_PASSWORD = 'Grace@10'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+# DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'
