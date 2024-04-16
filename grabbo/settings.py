@@ -1,18 +1,22 @@
 from pathlib import Path
 import os
-import os
+
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #SECRET_KEY = config("SECRET_KEY") windows env setting
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'grabbo.settings')
-SECRET_KEY = "1$+*sid7do0fsutb$uj#sa7x6e2l+&i(o-rz#ohxhjpltl!2&&" ##linux env settings
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
+# development
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
-DEBUG = True
 
-ALLOWED_HOSTS = []
-
-# ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
+# production
+DEBUG = False
+ALLOWED_HOSTS = ["api.grabbofertilityclinic.com", "www.api.grabbofertilityclinic.com"]
 
 
 INSTALLED_APPS = [
@@ -26,6 +30,7 @@ INSTALLED_APPS = [
     "clinic",
     'corsheaders',
       "anymail",
+       'drf_yasg',
 
 ]
 
@@ -180,7 +185,7 @@ REST_FRAMEWORK = {
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:8000",
     "http://127.0.0.1:8000",
     'https://grabbofertilityclinic.com',
     'https://www.grabbofertilityclinic.com'
@@ -191,14 +196,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
 ANYMAIL = {
 
-    "RESEND_API_KEY": os.environ.get('RESEND_API_KEY'),
+    "RESEND_API_KEY": os.getenv('RESEND_API_KEY') ,
 }
-
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST =  'smtp.zoho.com'
-# EMAIL_HOST_USER ='contact@grabbofertilityclinic.com'
-# EMAIL_HOST_PASSWORD = 'Grace@10'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
-# DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'

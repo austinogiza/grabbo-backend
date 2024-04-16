@@ -31,19 +31,21 @@ class ContactView(APIView):
             message=message,
         )
         contact.save()
-        context ={
+        context = {
             "name": name,
             "email": email,
             "phone": phone,
             "message": message
         }
         template = render_to_string('email.html', context)
-        email = EmailMessage(
-             'We have a new Contact mail',
-             template,
-               "contact@grabbofertilityclinic.com",
-            ['contact@grabbofertilityclinic.com']
-        )
-        email.fail_silently = False
-        email.send()
+        message = EmailMessage(
+                    'We have a new Contact mail',
+                template,
+                    "contact@grabbofertilityclinic.com",
+                    ['contact@grabbofertilityclinic.com']
+
+                    )
+        message.fail_silently =False
+        # message.content_subtype = 'html'
+        message.send()
         return Response(status=HTTP_201_CREATED)
