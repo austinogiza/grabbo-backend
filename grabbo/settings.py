@@ -29,8 +29,8 @@ INSTALLED_APPS = [
     'rest_framework',
     "clinic",
     'corsheaders',
-      "anymail",
-       'drf_yasg',
+    "anymail",
+    'drf_yasg',
 
 ]
 
@@ -190,7 +190,6 @@ CORS_ALLOWED_ORIGINS = [
     'https://grabbofertilityclinic.com',
     'https://www.grabbofertilityclinic.com'
 ]
-CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
