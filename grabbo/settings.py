@@ -50,7 +50,7 @@ ROOT_URLCONF = 'grabbo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR/ 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,11 +106,11 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
+        'HOST': os.getenv('SUPABASE_HOST'),
         'NAME': 'postgres',
-        'USER': 'postgres.ocywthojngqrssebhast',
+        'USER': os.getenv('SUPABASE_USER'),
         'PORT': '5432',
-        'PASSWORD': 'Grace20Blessing24',
+        'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
     }
 }
 # Password validation
