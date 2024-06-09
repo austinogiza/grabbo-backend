@@ -71,30 +71,30 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'grabbo',
-        'USER': 'postgres',
-        'PASSWORD': 'austinforreal',
-        'PORT': '5433',
-        'HOST': 'localhost'
-
-    }
-}
-
-
 # DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': getenv('DB_NAME'),
-#     'USER': getenv('DB_USER'),
-#     'PASSWORD': getenv('DB_PASSWORD'),
-#     'HOST': getenv('DB_HOST'),
-#     'PORT': "",
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'grabbo',
+#         'USER': 'postgres',
+#         'PASSWORD': 'austinforreal',
+#         'PORT': '5433',
+#         'HOST': 'localhost'
 
-#   }
+#     }
 # }
+
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': getenv('DB_NAME'),
+    'USER': getenv('DB_USER'),
+    'PASSWORD': getenv('DB_PASSWORD'),
+    'HOST': getenv('DB_HOST'),
+    'PORT': "",
+
+  }
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
