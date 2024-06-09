@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-
+from os import getenv
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,50 +69,32 @@ WSGI_APPLICATION = 'grabbo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'grabbo',
-#         "USER": 'postgres',
-#         "PASSWORD": 'austinforreal',
-#         "PORT": "",
-#         "HOST": "localhost",
-#     }
-# }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'grabbo',
-#         'USER': 'grabbo',
-#         'PASSWORD': 'grabbo',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'grabbo',
-#         'USER': 'postgres',
-#         'PASSWORD': 'austinforreal',
-#         'PORT': '5433',
-#         'HOST': 'localhost'
-
-#     }
-# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.getenv('SUPABASE_HOST'),
-        'NAME': 'postgres',
-        'USER': os.getenv('SUPABASE_USER'),
-        'PORT': '5432',
-        'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'grabbo',
+        'USER': 'postgres',
+        'PASSWORD': 'austinforreal',
+        'PORT': '5433',
+        'HOST': 'localhost'
+
     }
 }
+
+
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': getenv('DB_NAME'),
+#     'USER': getenv('DB_USER'),
+#     'PASSWORD': getenv('DB_PASSWORD'),
+#     'HOST': getenv('DB_HOST'),
+#     'PORT': "",
+
+#   }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -184,11 +166,23 @@ REST_FRAMEWORK = {
 }
 
 
+
+CORS_ALLOW_ALL_ORIGINS= False
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    'https://grabbofertilityclinic.com',
-    'https://www.grabbofertilityclinic.com'
+    "http://localhost:3002",
+    "https://grabbofertilityclinic.com",
+    "https://www.grabbofertilityclinic.com",
+    "https://api.grabbofertilityclinic.com",
+    "https://www.api.grabbofertilityclinic.com",
+]
+
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3002",
+   "https://grabbofertilityclinic.com",
+     "https://www.grabbofertilityclinic.com",
+        "https://api.grabbofertilityclinic.com",
+     "https://www.api.grabbofertilityclinic.com",
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -197,3 +191,7 @@ ANYMAIL = {
 
     "RESEND_API_KEY": os.getenv('RESEND_API_KEY') ,
 }
+
+EMAIL_SUBJECT_PREFIX="Grabbo Fertility Clinic"
+DEFAULT_FROM_EMAIL = 'contact@grabbofertilityclinic.com'
+SERVER_EMAIL = 'contact@grabbofertilityclinic.com'

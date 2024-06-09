@@ -46,6 +46,6 @@ class ContactView(APIView):
 
                     )
         message.fail_silently =False
-        # message.content_subtype = 'html'
+
         message.send()
         return Response(status=HTTP_201_CREATED)
